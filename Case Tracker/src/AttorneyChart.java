@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 
 import java.awt.EventQueue;
+import java.awt.Image;
 import java.sql.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -107,7 +108,9 @@ public class AttorneyChart extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\RCooper\\Desktop\\Case Tracker Backgrounds\\View Frame Size Background.jpg"));
+		Image imgback =  new ImageIcon(this.getClass().getResource("/View Frame Size Background.png")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(imgback));
+		
 		lblNewLabel.setBounds(0, 0, 984, 440);
 		contentPane.add(lblNewLabel);
 		

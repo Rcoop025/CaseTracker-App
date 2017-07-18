@@ -150,7 +150,8 @@ public class PassportChoice extends JFrame {
 		contentPane.add(ARotationLabel);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\RCooper\\Desktop\\Case Tracker Backgrounds\\Passport Background (update 3).jpg"));
+		Image imgback =  new ImageIcon(this.getClass().getResource("/Passport Background (update 3).png")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(imgback));
 		lblNewLabel.setBounds(0, 0, 584, 540);
 		contentPane.add(lblNewLabel);
 	}

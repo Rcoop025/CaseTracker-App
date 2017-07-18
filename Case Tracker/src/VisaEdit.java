@@ -22,6 +22,8 @@ import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTable;
@@ -160,7 +162,9 @@ public class VisaEdit extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\RCooper\\Desktop\\Case Tracker Backgrounds\\View Frame Size Background.jpg"));
+		Image imgback =  new ImageIcon(this.getClass().getResource("/View Frame Size Background.png")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(imgback));
+		
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblNewLabel.setBounds(0, 0, 984, 440);
 		contentPane.add(lblNewLabel);

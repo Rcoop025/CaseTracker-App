@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -362,7 +364,9 @@ public class VUpdateFrame extends JFrame {
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\RCooper\\Desktop\\Case Tracker Backgrounds\\Main Back for Add Frame.png"));
+		Image imgback =  new ImageIcon(this.getClass().getResource("/Main Back for Add Frame.png")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(imgback));
+		
 		lblNewLabel.setBounds(-12, 0, 596, 551);
 		contentPane.add(lblNewLabel);
 	}

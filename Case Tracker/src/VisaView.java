@@ -23,6 +23,8 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.SwingConstants;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -163,13 +165,17 @@ public class VisaView extends JFrame {
 		scrollPane.setColumnHeaderView(scrollBar);
 		
 		JLabel lblNewLabel = new JLabel("Search:");
+		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNewLabel.setBounds(52, 393, 46, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\RCooper\\Desktop\\Case Tracker Backgrounds\\View Frame Size Background.jpg"));
+		Image imgback =  new ImageIcon(this.getClass().getResource("/View Frame Size Background.png")).getImage();
+		lblNewLabel_1.setIcon(new ImageIcon(imgback));
+		
+		
 		lblNewLabel_1.setBounds(0, 0, 984, 440);
 		contentPane.add(lblNewLabel_1);
 	}

@@ -10,6 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.JTextField;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -305,7 +307,9 @@ public class AddFrame extends JFrame {
 		textField_9.setColumns(10);
 		
 		JLabel lblNewLabel_11 = new JLabel("New label");
-		lblNewLabel_11.setIcon(new ImageIcon("C:\\Users\\RCooper\\Desktop\\Case Tracker Backgrounds\\Main Back for Add Frame.png"));
+		Image imgback =  new ImageIcon(this.getClass().getResource("/Main Back for Add Frame.png")).getImage();
+		lblNewLabel_11.setIcon(new ImageIcon(imgback));
+	
 		lblNewLabel_11.setBounds(0, 0, 594, 550);
 		contentPane.add(lblNewLabel_11);
 	}

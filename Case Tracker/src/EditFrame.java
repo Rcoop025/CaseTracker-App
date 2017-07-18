@@ -25,6 +25,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.JTextField;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -164,7 +166,9 @@ public class EditFrame extends JFrame {
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\RCooper\\Desktop\\Case Tracker Backgrounds\\View Frame Size Background.jpg"));
+		Image imgback =  new ImageIcon(this.getClass().getResource("/View Frame Size Background.png")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(imgback));
+		
 		lblNewLabel.setBounds(0, 0, 984, 440);
 		contentPane.add(lblNewLabel);
 	}

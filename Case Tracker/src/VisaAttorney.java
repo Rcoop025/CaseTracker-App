@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -46,7 +47,9 @@ public class VisaAttorney extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\RCooper\\Desktop\\Case Tracker Backgrounds\\Visa View Attorney (Update 2).jpg"));
+		Image imgback =  new ImageIcon(this.getClass().getResource("/Visa View Attorney (Update 2).png")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(imgback));
+		
 		lblNewLabel.setBounds(0, 0, 984, 440);
 		contentPane.add(lblNewLabel);
 	}

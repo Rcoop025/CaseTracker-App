@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -96,7 +97,8 @@ public class LitigationChoice extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\RCooper\\Desktop\\Case Tracker Backgrounds\\Litigation Background (Final Update).jpg"));
+		Image imgback =  new ImageIcon(this.getClass().getResource("Litigation Background (Final Update).png")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(imgback));
 		lblNewLabel.setBounds(0, 0, 584, 561);
 		contentPane.add(lblNewLabel);
 	}

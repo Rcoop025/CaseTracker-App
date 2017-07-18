@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.Image;
 
 public class Login {
 
@@ -153,7 +154,9 @@ public class Login {
 		frmLoginFrame.getContentPane().add(btnNewButton_1);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\RCooper\\Desktop\\Case Tracker Backgrounds\\Main Backgroun Color.jpg"));
+		Image imgback =  new ImageIcon(this.getClass().getResource("/Main Backgroun Color.png")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(imgback));
+		
 		lblNewLabel.setBounds(0, 0, 434, 261);
 		frmLoginFrame.getContentPane().add(lblNewLabel);
 	}

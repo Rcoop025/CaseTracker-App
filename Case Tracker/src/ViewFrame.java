@@ -25,6 +25,8 @@ import javax.swing.border.BevelBorder;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.JTextField;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -184,7 +186,8 @@ public class ViewFrame extends JFrame {
 		textField.setColumns(10);
 		
 		lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\RCooper\\Desktop\\Case Tracker Backgrounds\\View Frame Size Background.jpg"));
+		Image imgback =  new ImageIcon(this.getClass().getResource("/View Frame Size Background.png")).getImage();
+		lblNewLabel_1.setIcon(new ImageIcon(imgback));
 		lblNewLabel_1.setBounds(0, 0, 984, 440);
 		contentPane.add(lblNewLabel_1);
 	}

@@ -136,7 +136,9 @@ public class VisaChoice extends JFrame {
 		contentPane.add(AttorneyLabel);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\RCooper\\Desktop\\Case Tracker Backgrounds\\Visa Background.jpg"));
+		Image imgback =  new ImageIcon(this.getClass().getResource("/Visa Background.png")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(imgback));
+		
 		lblNewLabel.setBounds(0, 0, 584, 540);
 		contentPane.add(lblNewLabel);
 	}
