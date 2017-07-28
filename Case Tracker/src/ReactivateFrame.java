@@ -24,6 +24,9 @@ import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class ReactivateFrame extends JFrame {
 
@@ -61,8 +64,25 @@ public class ReactivateFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public ReactivateFrame() {
+		setTitle("Passport Case Reactivation Form\r\n");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(400, 20, 600, 600);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnAction = new JMenu("Action");
+		menuBar.add(mnAction);
+		
+		JMenuItem mntmGoBack = new JMenuItem("Go Back");
+		mntmGoBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				PassInactiveCase pic  =  new PassInactiveCase();
+				pic.setVisible(true);
+				dispose();
+			}
+		});
+		mnAction.add(mntmGoBack);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -80,139 +100,139 @@ public class ReactivateFrame extends JFrame {
 		lblReactivateCaseForm.setForeground(Color.WHITE);
 		lblReactivateCaseForm.setHorizontalAlignment(SwingConstants.CENTER);
 		lblReactivateCaseForm.setFont(new Font("Verdana", Font.BOLD, 24));
-		lblReactivateCaseForm.setBounds(136, 35, 353, 35);
+		lblReactivateCaseForm.setBounds(141, 11, 353, 35);
 		panel.add(lblReactivateCaseForm);
 		
 		JLabel label_1 = new JLabel("Case Name:");
 		label_1.setForeground(Color.WHITE);
 		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		label_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		label_1.setBounds(146, 94, 89, 14);
+		label_1.setBounds(151, 70, 89, 14);
 		panel.add(label_1);
 		
 		textField = new JTextField();
 		textField.setColumns(10);
-		textField.setBounds(263, 91, 166, 20);
+		textField.setBounds(268, 67, 166, 20);
 		panel.add(textField);
 		
 		JLabel label_2 = new JLabel("Court:");
 		label_2.setFont(new Font("Tahoma", Font.BOLD, 11));
 		label_2.setForeground(Color.WHITE);
 		label_2.setHorizontalAlignment(SwingConstants.RIGHT);
-		label_2.setBounds(189, 130, 46, 14);
+		label_2.setBounds(194, 106, 46, 14);
 		panel.add(label_2);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(263, 126, 165, 20);
+		textField_1.setBounds(268, 102, 165, 20);
 		panel.add(textField_1);
 		
 		JLabel label_3 = new JLabel("Case No.:");
 		label_3.setFont(new Font("Tahoma", Font.BOLD, 11));
 		label_3.setForeground(Color.WHITE);
 		label_3.setHorizontalAlignment(SwingConstants.RIGHT);
-		label_3.setBounds(172, 165, 62, 14);
+		label_3.setBounds(177, 141, 62, 14);
 		panel.add(label_3);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(263, 162, 166, 20);
+		textField_2.setBounds(268, 138, 166, 20);
 		panel.add(textField_2);
 		
 		JLabel label_4 = new JLabel("L/CA Attorney:");
 		label_4.setFont(new Font("Tahoma", Font.BOLD, 11));
 		label_4.setForeground(Color.WHITE);
 		label_4.setHorizontalAlignment(SwingConstants.RIGHT);
-		label_4.setBounds(111, 201, 123, 14);
+		label_4.setBounds(116, 177, 123, 14);
 		panel.add(label_4);
 		
 		 comboBox = new JComboBox();
 		 comboBox.setModel(new DefaultComboBoxModel(new String[] {"[Select An Attorney]", "Abbas Ravjani", "Catherine Peters", "Eddie Cohen", "Elizabeth Donnelly", "Jeremy Weinberg", "Judith Osborn", "Julianna Bentes", "Mahvish Madad", "Matthew Hackell", "Natalya Scimeca", "Nina Schou", "Semra Mesulam", "Stephen Kerr", "Steven Fabry"}));
-		comboBox.setBounds(263, 198, 166, 20);
+		comboBox.setBounds(268, 174, 166, 20);
 		panel.add(comboBox);
 		
 		JLabel label_5 = new JLabel("PPT/L or OCS/L Lead:");
 		label_5.setFont(new Font("Tahoma", Font.BOLD, 11));
 		label_5.setForeground(Color.WHITE);
 		label_5.setHorizontalAlignment(SwingConstants.RIGHT);
-		label_5.setBounds(111, 241, 123, 14);
+		label_5.setBounds(116, 217, 123, 14);
 		panel.add(label_5);
 		
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
-		textField_3.setBounds(263, 238, 166, 20);
+		textField_3.setBounds(268, 214, 166, 20);
 		panel.add(textField_3);
 		
 		JLabel label_6 = new JLabel("DOJ-OIL or AUSA (Email):");
 		label_6.setFont(new Font("Tahoma", Font.BOLD, 11));
 		label_6.setForeground(Color.WHITE);
 		label_6.setHorizontalAlignment(SwingConstants.RIGHT);
-		label_6.setBounds(77, 283, 157, 14);
+		label_6.setBounds(82, 259, 157, 14);
 		panel.add(label_6);
 		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
-		textField_4.setBounds(263, 280, 166, 20);
+		textField_4.setBounds(268, 256, 166, 20);
 		panel.add(textField_4);
 		
 		JLabel label_7 = new JLabel("DOS Srv'd/Rec'd:");
 		label_7.setFont(new Font("Tahoma", Font.BOLD, 11));
 		label_7.setForeground(Color.WHITE);
 		label_7.setHorizontalAlignment(SwingConstants.RIGHT);
-		label_7.setBounds(111, 329, 123, 14);
+		label_7.setBounds(116, 305, 123, 14);
 		panel.add(label_7);
 		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
-		textField_5.setBounds(263, 326, 166, 20);
+		textField_5.setBounds(268, 302, 166, 20);
 		panel.add(textField_5);
 		
 		JLabel label_8 = new JLabel("Answer/MTO Due Date (filed):");
 		label_8.setFont(new Font("Tahoma", Font.BOLD, 11));
 		label_8.setForeground(Color.WHITE);
 		label_8.setHorizontalAlignment(SwingConstants.RIGHT);
-		label_8.setBounds(66, 370, 168, 14);
+		label_8.setBounds(71, 346, 168, 14);
 		panel.add(label_8);
 		
 		textField_6 = new JTextField();
 		textField_6.setColumns(10);
-		textField_6.setBounds(263, 367, 166, 20);
+		textField_6.setBounds(268, 343, 166, 20);
 		panel.add(textField_6);
 		
 		JLabel label_9 = new JLabel("Discovery cut-off date:");
 		label_9.setFont(new Font("Tahoma", Font.BOLD, 11));
 		label_9.setForeground(Color.WHITE);
 		label_9.setHorizontalAlignment(SwingConstants.RIGHT);
-		label_9.setBounds(100, 408, 134, 14);
+		label_9.setBounds(105, 384, 134, 14);
 		panel.add(label_9);
 		
 		textField_7 = new JTextField();
 		textField_7.setColumns(10);
-		textField_7.setBounds(263, 405, 166, 20);
+		textField_7.setBounds(268, 381, 166, 20);
 		panel.add(textField_7);
 		
 		JLabel label_10 = new JLabel("Trial Date:");
 		label_10.setFont(new Font("Tahoma", Font.BOLD, 11));
 		label_10.setForeground(Color.WHITE);
 		label_10.setHorizontalAlignment(SwingConstants.RIGHT);
-		label_10.setBounds(111, 439, 123, 14);
+		label_10.setBounds(116, 415, 123, 14);
 		panel.add(label_10);
 		
 		textField_8 = new JTextField();
 		textField_8.setColumns(10);
-		textField_8.setBounds(263, 436, 166, 20);
+		textField_8.setBounds(268, 412, 166, 20);
 		panel.add(textField_8);
 		
 		JLabel label_11 = new JLabel("Event of Filing:");
 		label_11.setFont(new Font("Tahoma", Font.BOLD, 11));
 		label_11.setForeground(Color.WHITE);
 		label_11.setHorizontalAlignment(SwingConstants.RIGHT);
-		label_11.setBounds(102, 474, 131, 14);
+		label_11.setBounds(107, 450, 131, 14);
 		panel.add(label_11);
 		
 		textField_9 = new JTextField();
 		textField_9.setColumns(10);
-		textField_9.setBounds(263, 471, 166, 20);
+		textField_9.setBounds(268, 447, 166, 20);
 		panel.add(textField_9);
 		
 		JButton button = new JButton("Transfer Case");
@@ -290,11 +310,13 @@ public class ReactivateFrame extends JFrame {
 				comboBox.setSelectedIndex(0);
 				
 				
+				PassInactiveCase pic = new PassInactiveCase();
+				pic.setVisible(true);
 				dispose();
 			
 			}
 		});
-		button.setBounds(146, 510, 134, 23);
+		button.setBounds(151, 486, 134, 23);
 		panel.add(button);
 		
 		JButton button_1 = new JButton("Retrieve");
@@ -390,7 +412,7 @@ public class ReactivateFrame extends JFrame {
 			
 			}
 		});
-		button_1.setBounds(324, 510, 123, 23);
+		button_1.setBounds(329, 486, 123, 23);
 		panel.add(button_1);
 		
 		JLabel lblNewLabel = new JLabel("New label");

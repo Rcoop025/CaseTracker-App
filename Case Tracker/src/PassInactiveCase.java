@@ -78,6 +78,13 @@ public class PassInactiveCase extends JFrame {
 		mnAction.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Delete Inactive Case");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				DeleteInactiveCase dic = new DeleteInactiveCase();
+				dic.setVisible(true);
+				dispose();
+			}
+		});
 		mnAction.add(mntmNewMenuItem_1);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Go Back");
@@ -152,6 +159,7 @@ public class PassInactiveCase extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JLabel lblSearch = new JLabel("Search:");
+		lblSearch.setForeground(Color.WHITE);
 		lblSearch.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSearch.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblSearch.setBounds(53, 388, 46, 14);

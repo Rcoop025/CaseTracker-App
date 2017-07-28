@@ -40,6 +40,23 @@ public class VisaAttorney extends JFrame {
 	public VisaAttorney() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 500);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnAction = new JMenu("Action");
+		menuBar.add(mnAction);
+		
+		JMenuItem mntmGoBack = new JMenuItem("Go Back");
+		mntmGoBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				VisaChoice vc  = new VisaChoice();
+				vc.setVisible(true);
+				dispose();
+			}
+		});
+		mnAction.add(mntmGoBack);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

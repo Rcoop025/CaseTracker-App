@@ -67,9 +67,24 @@ public class VisaInactive extends JFrame {
 		menuBar.add(mnAction);
 		
 		JMenuItem mntmAddInactiveCase = new JMenuItem("Add Inactive Case");
+		mntmAddInactiveCase.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				VisaInactiveCase  vic = new VisaInactiveCase();
+				vic.setVisible(true);
+				dispose();
+			}
+		});
 		mnAction.add(mntmAddInactiveCase);
 		
 		JMenuItem mntmDeleteInactiveCase = new JMenuItem("Delete Inactive Case");
+		mntmDeleteInactiveCase.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				DeleteInactiveVisa div = new DeleteInactiveVisa();
+				div.setVisible(true);
+				dispose();
+			}
+		});
 		mnAction.add(mntmDeleteInactiveCase);
 		
 		JMenuItem mntmGoBack = new JMenuItem("Go Back");
@@ -80,6 +95,18 @@ public class VisaInactive extends JFrame {
 				dispose();
 			}
 		});
+		
+		JMenuItem mntmReactivateCase = new JMenuItem("Reactivate Case");
+		mntmReactivateCase.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				VisaReactivateCase  vrc = new VisaReactivateCase();
+				vrc.setVisible(true);
+				dispose();
+				
+				
+			}
+		});
+		mnAction.add(mntmReactivateCase);
 		mnAction.add(mntmGoBack);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.LIGHT_GRAY);
