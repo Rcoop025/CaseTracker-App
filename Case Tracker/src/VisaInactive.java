@@ -71,7 +71,7 @@ public class VisaInactive extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				VisaInactiveCase  vic = new VisaInactiveCase();
 				vic.setVisible(true);
-				dispose();
+				
 			}
 		});
 		mnAction.add(mntmAddInactiveCase);
@@ -82,7 +82,7 @@ public class VisaInactive extends JFrame {
 				
 				DeleteInactiveVisa div = new DeleteInactiveVisa();
 				div.setVisible(true);
-				dispose();
+			
 			}
 		});
 		mnAction.add(mntmDeleteInactiveCase);
@@ -101,7 +101,7 @@ public class VisaInactive extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				VisaReactivateCase  vrc = new VisaReactivateCase();
 				vrc.setVisible(true);
-				dispose();
+				
 				
 				
 			}

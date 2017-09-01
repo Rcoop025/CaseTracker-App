@@ -82,7 +82,7 @@ public class PassInactiveCase extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				DeleteInactiveCase dic = new DeleteInactiveCase();
 				dic.setVisible(true);
-				dispose();
+				
 			}
 		});
 		mnAction.add(mntmNewMenuItem_1);

@@ -58,6 +58,134 @@ public class VUpdateFrame extends JFrame {
 			}
 		});
 	}
+	InheritVisaFuncs ivf = new InheritVisaFuncs();
+
+	/**
+	 * Create the frame.
+	 */
+	public void passData()
+	{
+		
+		System.out.println("INSIDE OF THE PASS DATA FUNCTION");
+		
+		ivf.tempcaseName = textField.getText();
+		System.out.println("Pass Data-Case Name = " + ivf.tempcaseName);
+		
+		ivf.tempCourt = textField_1.getText();
+		System.out.println("Pass Data-Court District = " + ivf.tempCourt);
+		ivf.tempCaseNo = textField_2.getText();
+		System.out.println("Pass Data-Case Number = " + ivf.tempCaseNo);
+		
+		ivf.tempLcaAttorney = (String)comboBox.getSelectedItem();
+		
+		
+		
+		
+		
+			switch(ivf.tempLcaAttorney)
+				{
+						
+			
+			case "Judith Osborn":
+				this.comboBox.setSelectedIndex(1);
+				break;
+			
+			case "Mahvish Madad":
+				this.comboBox.setSelectedIndex(2);
+				break;
+			
+			case "Stephen Kerr":
+				this.comboBox.setSelectedIndex(3);
+				break;
+				default: 
+					this.comboBox.setSelectedItem(0);
+			
+	
+				}
+		
+
+			ivf.tempPPT_OSC_Attorney = textField_3.getText();
+			ivf.tempDOJ_OIL_AUSA_E =  textField_4.getText();
+			ivf.tempDOS_srvd_recd =  textField_5.getText();
+			ivf.tempAnswer_MTO_Date = textField_6.getText();
+			ivf.tempDiscovery_Cut_Date = textField_7.getText();
+			ivf.temptrialDate = textField_8.getText();
+			ivf.tempEvent_Filing = textField_9.getText();
+		
+	
+	}
+	
+	public void passComponentData()
+	{
+		this.textField.setText(ivf.tempcaseName);
+		this.textField_1.setText(ivf.tempCourt);
+		this.textField_2.setText(ivf.tempCaseNo);
+		
+		
+		
+		
+		
+			switch(ivf.tempLcaAttorney)
+				{
+						
+				case "Judith Osborn":
+					this.comboBox.setSelectedIndex(1);
+					break;
+				
+				case "Mahvish Madad":
+					this.comboBox.setSelectedIndex(2);
+					break;
+				
+				case "Stephen Kerr":
+					this.comboBox.setSelectedIndex(3);
+					break;
+					default: 
+						this.comboBox.setSelectedItem(0);
+				
+	
+				}
+		
+
+		this.textField_3.setText(ivf.tempPPT_OSC_Attorney);
+		this.textField_4.setText(ivf.tempDOJ_OIL_AUSA_E);
+		this.textField_5.setText(ivf.tempDOS_srvd_recd);
+		this.textField_6.setText(ivf.tempAnswer_MTO_Date);
+		this.textField_7.setText(ivf.tempDiscovery_Cut_Date);
+		this.textField_8.setText(ivf.temptrialDate);
+		this.textField_9.setText(ivf.tempEvent_Filing);
+		
+	}
+	
+	public void clearFields()
+	{
+		textField.setText("");
+		textField_1.setText("");
+		textField_2.setText("");
+		textField_3.setText("");
+		textField_4.setText("");
+		textField_6.setText("");
+		textField_5.setText("");
+		textField_7.setText("");
+		textField_8.setText("");
+		textField_9.setText("");
+		comboBox.setSelectedIndex(0);
+	}
+	
+	private void display()
+	{
+		
+		ivf.saveChanges(this, ivf.tempcaseName);
+		
+		
+	}
+	private void display2()
+	{
+		String name = textField.getText();
+		 System.out.println("Case Name = " + name);
+		ivf.retrieveCase(this, name);
+		
+		
+	}
 
 	/**
 	 * Create the frame.
@@ -75,7 +203,8 @@ public class VUpdateFrame extends JFrame {
 		JMenuItem mntmGoBack = new JMenuItem("Go Back");
 		mntmGoBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				VisaEdit frame = new VisaEdit();
+				frame.setVisible(true);
 				dispose();
 				}
 		});
@@ -228,64 +357,8 @@ public class VUpdateFrame extends JFrame {
 		JButton button = new JButton("Submit Changes");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String caseName = textField.getText();
-				String court = textField_1.getText();
-				String caseNo = textField_2.getText();
-				String lcaAttorney = (String)comboBox.getSelectedItem();
-				String PPT_OSC_Attorney  = textField_3.getText();
-				String DOJ_OIL_AUSA_E = textField_4.getText();
-				String DOS_srvd_recd = textField_5.getText();
-				String Answer_MTO_Date = textField_6.getText();
-				String Discovery_Cut_Date = textField_7.getText();
-				String trialDate = textField_8.getText();
-				String Event_Filing = textField_9.getText();
-				
-				
-				//System.out.println(caseName);
-				//System.out.println(court);
-				try{
-					Connect c = new Connect();
-					Connection con = c.start();
-					PreparedStatement ps = con.prepareStatement("update vchart set Case_Name=?,Court=?,Case_Number=?,"
-							+ "LCA_Attorney=?, PPTL_OSCL_Attorney=?, DOJ_OIL_AUSA_Attorney_Email=?,DOS_Srvd_Recd=?,"
-							+ "Answer_MTO_Due_Date=?,Discovery_Cut_Off_Date=?,Trial_Date=?,Event_or_Filing=? where  Case_Name = '"+caseName+"'");
-					ps.setString(1, caseName);
-					ps.setString(2, court);
-					ps.setString(3, caseNo);
-					ps.setString(4, lcaAttorney);
-					ps.setString(5, PPT_OSC_Attorney);
-					ps.setString(6, DOJ_OIL_AUSA_E);
-					ps.setString(7, DOS_srvd_recd);
-					ps.setString(8, Answer_MTO_Date);
-					ps.setString(9, Discovery_Cut_Date);
-					ps.setString(10, trialDate);
-					ps.setString(11, Event_Filing);
-					
-					int x =0; 
-					x = ps.executeUpdate();
-					if(x!=0)
-					JOptionPane.showMessageDialog(contentPane, "Selection Updated Succefully!");
-					
-					con.close();
-				}	catch(ClassNotFoundException  | SQLException e)
-					{
-					System.out.println(e);
-					
-					}
-				
-				
-				//The Following statements will clear all of the fields in the Add Form
-				textField.setText("");
-				textField_1.setText("");
-				textField_2.setText("");
-				textField_3.setText("");
-				textField_4.setText("");
-				textField_6.setText("");
-				textField_5.setText("");
-				textField_7.setText("");
-				textField_8.setText("");
-				textField_9.setText("");
-				comboBox.setSelectedIndex(0);
+				passData();
+				display();
 				
 				
 				dispose();
@@ -299,63 +372,8 @@ public class VUpdateFrame extends JFrame {
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				String name = textField.getText();
-				String ComboBoxStr;
-				try{
-					Connect c = new Connect();
-					Connection con = c.start();
-					PreparedStatement ps = con.prepareStatement("select * from vchart where Case_Name =?");
-					//String sql = "select * from vchart where Case_Name like '%"+name+"%'";
-					
-					ps.setString(1, name);
-					
-					ResultSet rs = ps.executeQuery();
-					while(rs.next())
-					{
-						
-						textField.setText(rs.getString("Case_Name"));
-						textField_1.setText(rs.getString("Court"));
-						textField_2.setText(rs.getString("Case_Number"));
-						
-							switch(rs.getString("LCA_Attorney"))
-								{
-										
-						
-							
-							
-							case "Judith Osborn":
-								comboBox.setSelectedIndex(1);
-								break;
-							
-							case "Mahvish Madad":
-								comboBox.setSelectedIndex(2);
-								break;
-							
-							case "Stephen Kerr":
-								comboBox.setSelectedIndex(3);
-								break;
-								default: 
-									comboBox.setSelectedItem(0);
-							
-					
-								}
-						
-
-						textField_3.setText(rs.getString("PPTL_OSCL_Attorney"));
-						textField_4.setText(rs.getString("DOJ_OIL_AUSA_Attorney_Email"));
-						textField_5.setText(rs.getString("DOS_Srvd_Recd"));
-						textField_6.setText(rs.getString("Answer_MTO_Due_Date"));
-						textField_7.setText(rs.getString("Discovery_Cut_Off_Date"));
-						textField_8.setText(rs.getString("Trial_Date"));
-						textField_9.setText(rs.getString("Event_or_Filing"));
-						
-					}
-					c.stop();
-					
-					}catch(ClassNotFoundException| SQLException e)
-					{
-					JOptionPane.showMessageDialog(contentPane, e);
-					}
+				display2();
+				passComponentData();
 			}
 		});
 		button_1.setBounds(314, 500, 123, 23);

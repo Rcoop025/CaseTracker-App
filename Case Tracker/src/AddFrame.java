@@ -1,3 +1,11 @@
+/*Parental Frame : AddFrame.java
+ * DESCRIPTION : The OOD principle of inheritance will be used throughout this entire project.
+ * AddFrame.java will be the parent frame that all frames pertaining to inserting, retrieving, deleting, transferring, and
+ * editing will pull features/functions from.
+ * 
+ * 
+ */
+
 import java.awt.BorderLayout;
 import java.sql.*;
 import java.awt.EventQueue;
@@ -24,7 +32,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
-public class AddFrame extends JFrame {
+public  class AddFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -38,7 +46,11 @@ public class AddFrame extends JFrame {
 	private JTextField textField_8;
 	private JTextField textField_9;
 	private JComboBox comboBox;
-
+	private boolean isValid;
+	
+	InheritCaseFuncs icf = new InheritCaseFuncs();
+//Global variables to hold the data eneter into the fields
+	
 	/**
 	 * Launch the application.
 	 */
@@ -54,10 +66,58 @@ public class AddFrame extends JFrame {
 			}
 		});
 	}
-
+ 
+	
+	//This method grabs all data from the textfields and comboBox
+	public void connectFields()
+	{
+		icf.tempcaseName = textField.getText();
+		 icf.tempCourt = textField_9.getText();
+		 icf.tempCaseNo = textField_1.getText();
+		icf.tempLcaAttorney = (String)comboBox.getSelectedItem();
+		 icf.tempPPT_OSC_Attorney  = textField_2.getText();
+		 icf.tempDOJ_OIL_AUSA_E = textField_3.getText();
+		icf.tempDOS_srvd_recd = textField_4.getText();
+		icf.tempAnswer_MTO_Date = textField_5.getText();
+		icf.tempDiscovery_Cut_Date = textField_6.getText();
+		icf.temptrialDate = textField_7.getText();
+		 icf.tempEvent_Filing = textField_8.getText();
+	}
+	//This method checks the entry to see if there is a case name for the first text field.
+	//This is important for future adjustments such as sorting, so that there is a way 
+	//to sort the cases accurately by Case Name.
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * Create the frame.
 	 */
+	public void clearFields()
+	{
+		textField.setText("");
+		textField_1.setText("");
+		textField_2.setText("");
+		textField_3.setText("");
+		textField_4.setText("");
+		textField_6.setText("");
+		textField_5.setText("");
+		textField_7.setText("");
+		textField_8.setText("");
+		textField_9.setText("");
+		comboBox.setSelectedIndex(0);
+	}
+	
+	private void display()
+	{
+		icf.addCase(this);
+		
+	}
 	public AddFrame() {
 		setTitle("Add New Case");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -72,60 +132,19 @@ public class AddFrame extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				//The Following statements are to connect the text fields/comboBox to a variable so that it can be manipulated
-				String caseName = textField.getText();
-				String court = textField_9.getText();
-				String caseNo = textField_1.getText();
-				String lcaAttorney = (String)comboBox.getSelectedItem();
-				String PPT_OSC_Attorney  = textField_2.getText();
-				String DOJ_OIL_AUSA_E = textField_3.getText();
-				String DOS_srvd_recd = textField_4.getText();
-				String Answer_MTO_Date = textField_5.getText();
-				String Discovery_Cut_Date = textField_6.getText();
-				String trialDate = textField_7.getText();
-				String Event_Filing = textField_8.getText();
 				
-				try{
-					Connect c = new Connect();
-					Connection con = c.start();
-					PreparedStatement ps = con.prepareStatement("insert into pchart values(?,?,?,?,?,?,?,?,?,?,?)");
-					ps.setString(1, caseName);
-					ps.setString(2, court);
-					ps.setString(3, caseNo);
-					ps.setString(4, lcaAttorney);
-					ps.setString(5, PPT_OSC_Attorney);
-					ps.setString(6, DOJ_OIL_AUSA_E);
-					ps.setString(7, DOS_srvd_recd);
-					ps.setString(8, Answer_MTO_Date);
-					ps.setString(9, Discovery_Cut_Date);
-					ps.setString(10, trialDate);
-					ps.setString(11, Event_Filing);
-					
-					int x =0; 
-					x = ps.executeUpdate();
-					if(x!=0)
-					JOptionPane.showMessageDialog(contentPane, "Data Inserted!");
-					
-					con.close();
-				}	catch(ClassNotFoundException  | SQLException e)
-					{
-					System.out.println(e);
-					
-					}
+				//This function helps to connect the components of the frame/window to variable for
+				//data manipulation
+				connectFields();
 				
+				//This display function is a principle of Object Oriented Design - Multiple Inheritance
+				//upon calling, the function uses an object "icf", which inherits from an abstract class to 
+				//add data to the database.
+				display();
 				
 				//The Following statements will clear all of the fields in the Add Form
-				textField.setText("");
-				textField_1.setText("");
-				textField_2.setText("");
-				textField_3.setText("");
-				textField_4.setText("");
-				textField_6.setText("");
-				textField_5.setText("");
-				textField_7.setText("");
-				textField_8.setText("");
-				textField_9.setText("");
-				comboBox.setSelectedIndex(0);
+				clearFields();
+				
 				
 				}
 			
@@ -147,6 +166,7 @@ public class AddFrame extends JFrame {
 		btnNewButton_1.setBounds(321, 502, 89, 23);
 		contentPane.add(btnNewButton_1);
 		
+
 		JLabel lblNewLabel = new JLabel("Case Name:");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -312,5 +332,11 @@ public class AddFrame extends JFrame {
 	
 		lblNewLabel_11.setBounds(0, 0, 594, 550);
 		contentPane.add(lblNewLabel_11);
+	}
+	
+	public void dataValidation()
+	{
+		
+		
 	}
 }

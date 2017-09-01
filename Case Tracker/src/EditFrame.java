@@ -54,6 +54,8 @@ public class EditFrame extends JFrame {
 			}
 		});
 	}
+	
+	InheritCaseFuncs icf = new InheritCaseFuncs();
 
 	/**
 	 * Create the frame.

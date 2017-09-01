@@ -40,6 +40,7 @@ public class DeleteInactiveVisa extends JFrame {
 	private JTextField textField_7;
 	private JTextField textField_8;
 	private JTextField textField_9;
+	private JComboBox comboBox;
 
 	/**
 	 * Launch the application.
@@ -57,9 +58,138 @@ public class DeleteInactiveVisa extends JFrame {
 		});
 	}
 
+	InheritVisaFuncs ivf = new InheritVisaFuncs();
+
 	/**
 	 * Create the frame.
 	 */
+	public void passData()
+	{
+		
+		System.out.println("INSIDE OF THE PASS DATA FUNCTION");
+		
+		ivf.tempcaseName = textField.getText();
+		System.out.println("Pass Data-Case Name = " + ivf.tempcaseName);
+		
+		ivf.tempCourt = textField_1.getText();
+		System.out.println("Pass Data-Court District = " + ivf.tempCourt);
+		ivf.tempCaseNo = textField_2.getText();
+		System.out.println("Pass Data-Case Number = " + ivf.tempCaseNo);
+		
+		ivf.tempLcaAttorney = (String)comboBox.getSelectedItem();
+		
+		
+		
+		
+		
+			switch(ivf.tempLcaAttorney)
+				{
+						
+			
+			case "Judith Osborn":
+				this.comboBox.setSelectedIndex(1);
+				break;
+			
+			case "Mahvish Madad":
+				this.comboBox.setSelectedIndex(2);
+				break;
+			
+			case "Stephen Kerr":
+				this.comboBox.setSelectedIndex(3);
+				break;
+				default: 
+					this.comboBox.setSelectedItem(0);
+			
+	
+				}
+		
+
+			ivf.tempPPT_OSC_Attorney = textField_3.getText();
+			ivf.tempDOJ_OIL_AUSA_E =  textField_4.getText();
+			ivf.tempDOS_srvd_recd =  textField_5.getText();
+			ivf.tempAnswer_MTO_Date = textField_6.getText();
+			ivf.tempDiscovery_Cut_Date = textField_7.getText();
+			ivf.temptrialDate = textField_8.getText();
+			ivf.tempEvent_Filing = textField_9.getText();
+		
+	
+	}
+	
+	public void passComponentData()
+	{
+		this.textField.setText(ivf.tempcaseName);
+		this.textField_1.setText(ivf.tempCourt);
+		this.textField_2.setText(ivf.tempCaseNo);
+		
+		
+		
+		
+		
+			switch(ivf.tempLcaAttorney)
+				{
+						
+				case "Judith Osborn":
+					this.comboBox.setSelectedIndex(1);
+					break;
+				
+				case "Mahvish Madad":
+					this.comboBox.setSelectedIndex(2);
+					break;
+				
+				case "Stephen Kerr":
+					this.comboBox.setSelectedIndex(3);
+					break;
+					default: 
+						this.comboBox.setSelectedItem(0);
+				
+	
+				}
+		
+
+		this.textField_3.setText(ivf.tempPPT_OSC_Attorney);
+		this.textField_4.setText(ivf.tempDOJ_OIL_AUSA_E);
+		this.textField_5.setText(ivf.tempDOS_srvd_recd);
+		this.textField_6.setText(ivf.tempAnswer_MTO_Date);
+		this.textField_7.setText(ivf.tempDiscovery_Cut_Date);
+		this.textField_8.setText(ivf.temptrialDate);
+		this.textField_9.setText(ivf.tempEvent_Filing);
+		
+	}
+	
+	public void clearFields()
+	{
+		textField.setText("");
+		textField_1.setText("");
+		textField_2.setText("");
+		textField_3.setText("");
+		textField_4.setText("");
+		textField_6.setText("");
+		textField_5.setText("");
+		textField_7.setText("");
+		textField_8.setText("");
+		textField_9.setText("");
+		comboBox.setSelectedIndex(0);
+	}
+	
+	private void display()
+	{
+		
+		ivf.deleteCase(this);
+		
+		
+	}
+	private void display2()
+	{
+		String name = textField.getText();
+		 System.out.println("Case Name = " + name);
+		ivf.inactiveRetrieveCase(this, name);
+		
+		
+	}
+
+	
+	
+	
 	public DeleteInactiveVisa() {
 		setTitle("Visa Case Deletion Form");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -135,7 +265,7 @@ public class DeleteInactiveVisa extends JFrame {
 		label_4.setBounds(113, 177, 123, 14);
 		contentPane.add(label_4);
 		
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"[Select An Attorney]", "Abbas Ravjani", "Catherine Peters", "Eddie Cohen", "Elizabeth Donnelly", "Jeremy Weinberg", "Judith Osborn", "Julianna Bentes", "Mahvish Madad", "Matthew Hackell", "Natalya Scimeca", "Nina Schou", "Semra Mesulam", "Stephen Kerr", "Steven Fabry"}));
 		comboBox.setBounds(265, 174, 166, 20);
 		contentPane.add(comboBox);
@@ -228,55 +358,10 @@ public class DeleteInactiveVisa extends JFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
+			passData();
+			display();
 				
-				String caseName = textField.getText();
-				
-				
-				
-				System.out.println(caseName);
-				
-				try{
-					Connect c = new Connect();
-					Connection con = c.start();
-					Statement st = con.createStatement();
-				
-					
-					int a =1;
-					String sql = "delete from visa_inactive where Case_Name='"+caseName+"'";
-					a = st.executeUpdate(sql);
-					
-					//debugging statement to find out the value of -a- to get the popup alert to activate
-					System.out.println("A is equaled to" + a);
-					
-					if(a != 0)
-						JOptionPane.showMessageDialog(contentPane, "Case Deleted!!");
-					
-					
-					con.close();
-				}	catch(ClassNotFoundException  | SQLException e)
-					{
-					System.out.println(e);
-					
-					}
-				
-				
-				//The Following statements will clear all of the fields in the Add Form
-				textField.setText("");
-				textField_1.setText("");
-				textField_2.setText("");
-				textField_3.setText("");
-				textField_4.setText("");
-				textField_6.setText("");
-				textField_5.setText("");
-				textField_7.setText("");
-				textField_8.setText("");
-				textField_9.setText("");
-				comboBox.setSelectedIndex(0);
-				
-				
-				VisaInactive vi = new VisaInactive();
-				vi.setVisible(true);
-				dispose();
+			dispose();
 			}
 		});
 		button.setBounds(148, 486, 134, 23);
@@ -286,92 +371,8 @@ public class DeleteInactiveVisa extends JFrame {
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String name = textField.getText();
-				String ComboBoxStr;
-				try{
-					Connect c = new Connect();
-					Connection con = c.start();
-					PreparedStatement ps = con.prepareStatement("select * from visa_inactive where Case_Name =?");
-					//String sql = "insert * from pass_inactive where Case_Name like '%"+name+"%'";
-					
-					ps.setString(1, name);
-					
-					ResultSet rs = ps.executeQuery();
-					while(rs.next())
-					{
-						
-						textField.setText(rs.getString("Case_Name"));
-						textField_1.setText(rs.getString("Court"));
-						textField_2.setText(rs.getString("Case_Number"));
-						
-							switch(rs.getString("LCA_Attorney"))
-								{
-										
-							case "Abbas Ravjani":
-								comboBox.setSelectedIndex(1);
-								break;
-							case "Catherine Peters":
-								comboBox.setSelectedIndex(2);
-								break;
-							case "Eddie Cohen":
-								comboBox.setSelectedIndex(3);
-								break;
-							case "Elizabeth Donnelly":
-								comboBox.setSelectedIndex(4);
-								break;
-							case "Jeremy Weinberg":
-								comboBox.setSelectedIndex(5);
-								break;
-							case "Judith Osborn":
-								comboBox.setSelectedIndex(6);
-								break;
-							case "Julianna Bentes":
-								comboBox.setSelectedIndex(7);
-								break;
-							case "Mahvish Madad":
-								comboBox.setSelectedIndex(8);
-								break;
-							case "Matthew Hackell":
-								comboBox.setSelectedIndex(9);
-								break;
-							case "Natalya Scimeca":
-								comboBox.setSelectedIndex(10);
-								break;
-							case "Nina Schou":
-								comboBox.setSelectedIndex(11);
-								break;
-							case "Semra Mesulam":
-								comboBox.setSelectedIndex(12);
-								break;
-							case "Stephen Kerr":
-								comboBox.setSelectedIndex(13);
-								break;
-								default: 
-									comboBox.setSelectedItem(0);
-							case "Steven Fabry":
-								comboBox.setSelectedItem(1);
-								break;
-					
-								}
-						
-
-						textField_3.setText(rs.getString("PPTL_OSCL_Attorney"));
-						textField_4.setText(rs.getString("DOJ_OIL_AUSA_Attorney_Email"));
-						textField_5.setText(rs.getString("DOS_Srvd_Recd"));
-						textField_6.setText(rs.getString("Answer_MTO_Due_Date"));
-						textField_7.setText(rs.getString("Discovery_Cut_Off_Date"));
-						textField_8.setText(rs.getString("Trial_Date"));
-						textField_9.setText(rs.getString("Event_or_Filing"));
-						
-					}
-					c.stop();
-					
-					}catch(ClassNotFoundException| SQLException e2)
-					{
-						
-					JOptionPane.showMessageDialog(contentPane, e);
-					
-					}
+				display2();
+				passComponentData();
 			
 			
 			

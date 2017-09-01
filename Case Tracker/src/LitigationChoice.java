@@ -1,3 +1,5 @@
+
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Image;
@@ -102,4 +104,7 @@ public class LitigationChoice extends JFrame {
 		lblNewLabel.setBounds(0, 0, 584, 561);
 		contentPane.add(lblNewLabel);
 	}
+	
+
+	
 }

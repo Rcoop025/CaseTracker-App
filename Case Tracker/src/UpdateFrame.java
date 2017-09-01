@@ -44,6 +44,8 @@ public class UpdateFrame extends JFrame {
 	private JTextField textField_9;
 	private JComboBox comboBox;
 
+	
+	String name;
 	/**
 	 * Launch the application.
 	 */
@@ -60,10 +62,195 @@ public class UpdateFrame extends JFrame {
 			}
 		});
 	}
+	
+	InheritCaseFuncs icf = new InheritCaseFuncs();
 
 	/**
 	 * Create the frame.
 	 */
+	public void passData()
+	{
+		
+		System.out.println("INSIDE OF THE PASS DATA FUNCTION");
+		
+		icf.tempcaseName = textField.getText();
+		System.out.println("Pass Data-Case Name = " + icf.tempcaseName);
+		
+		icf.tempCourt = textField_1.getText();
+		System.out.println("Pass Data-Court District = " + icf.tempCourt);
+		icf.tempCaseNo = textField_2.getText();
+		System.out.println("Pass Data-Case Number = " + icf.tempCaseNo);
+		
+		icf.tempLcaAttorney = (String)comboBox.getSelectedItem();
+		
+		
+		
+		
+		
+			switch(icf.tempLcaAttorney)
+				{
+						
+			case "Abbas Ravjani":
+				this.comboBox.setSelectedIndex(1);
+				break;
+			case "Catherine Peters":
+				this.comboBox.setSelectedIndex(2);
+				break;
+			case "Eddie Cohen":
+				this.comboBox.setSelectedIndex(3);
+				break;
+			case "Elizabeth Donnelly":
+				this.comboBox.setSelectedIndex(4);
+				break;
+			case "Jeremy Weinberg":
+				this.comboBox.setSelectedIndex(5);
+				break;
+			case "Judith Osborn":
+				this.comboBox.setSelectedIndex(6);
+				break;
+			case "Julianna Bentes":
+				this.comboBox.setSelectedIndex(7);
+				break;
+			case "Mahvish Madad":
+				this.comboBox.setSelectedIndex(8);
+				break;
+			case "Matthew Hackell":
+				this.comboBox.setSelectedIndex(9);
+				break;
+			case "Natalya Scimeca":
+				this.comboBox.setSelectedIndex(10);
+				break;
+			case "Nina Schou":
+				this.comboBox.setSelectedIndex(11);
+				break;
+			case "Semra Mesulam":
+				this.comboBox.setSelectedIndex(12);
+				break;
+			case "Stephen Kerr":
+				this.comboBox.setSelectedIndex(13);
+				break;
+				default: 
+					this.comboBox.setSelectedItem(0);
+			case "Steven Fabry":
+				this.comboBox.setSelectedItem(1);
+				break;
+	
+				}
+		
+
+			icf.tempPPT_OSC_Attorney = textField_3.getText();
+			icf.tempDOJ_OIL_AUSA_E =  textField_4.getText();
+			icf.tempDOS_srvd_recd =  textField_5.getText();
+			icf.tempAnswer_MTO_Date = textField_6.getText();
+			icf.tempDiscovery_Cut_Date = textField_7.getText();
+			icf.temptrialDate = textField_8.getText();
+			icf.tempEvent_Filing = textField_9.getText();
+		
+	
+	}
+	
+	public void passComponentData()
+	{
+		this.textField.setText(icf.tempcaseName);
+		this.textField_1.setText(icf.tempCourt);
+		this.textField_2.setText(icf.tempCaseNo);
+		
+		
+		
+		
+		
+			switch(icf.tempLcaAttorney)
+				{
+						
+			case "Abbas Ravjani":
+				this.comboBox.setSelectedIndex(1);
+				break;
+			case "Catherine Peters":
+				this.comboBox.setSelectedIndex(2);
+				break;
+			case "Eddie Cohen":
+				this.comboBox.setSelectedIndex(3);
+				break;
+			case "Elizabeth Donnelly":
+				this.comboBox.setSelectedIndex(4);
+				break;
+			case "Jeremy Weinberg":
+				this.comboBox.setSelectedIndex(5);
+				break;
+			case "Judith Osborn":
+				this.comboBox.setSelectedIndex(6);
+				break;
+			case "Julianna Bentes":
+				this.comboBox.setSelectedIndex(7);
+				break;
+			case "Mahvish Madad":
+				this.comboBox.setSelectedIndex(8);
+				break;
+			case "Matthew Hackell":
+				this.comboBox.setSelectedIndex(9);
+				break;
+			case "Natalya Scimeca":
+				this.comboBox.setSelectedIndex(10);
+				break;
+			case "Nina Schou":
+				this.comboBox.setSelectedIndex(11);
+				break;
+			case "Semra Mesulam":
+				this.comboBox.setSelectedIndex(12);
+				break;
+			case "Stephen Kerr":
+				this.comboBox.setSelectedIndex(13);
+				break;
+				default: 
+					this.comboBox.setSelectedItem(0);
+			case "Steven Fabry":
+				this.comboBox.setSelectedItem(1);
+				break;
+	
+				}
+		
+
+		this.textField_3.setText(icf.tempPPT_OSC_Attorney);
+		this.textField_4.setText(icf.tempDOJ_OIL_AUSA_E);
+		this.textField_5.setText(icf.tempDOS_srvd_recd);
+		this.textField_6.setText(icf.tempAnswer_MTO_Date);
+		this.textField_7.setText(icf.tempDiscovery_Cut_Date);
+		this.textField_8.setText(icf.temptrialDate);
+		this.textField_9.setText(icf.tempEvent_Filing);
+		
+	}
+	
+	public void clearFields()
+	{
+		textField.setText("");
+		textField_1.setText("");
+		textField_2.setText("");
+		textField_3.setText("");
+		textField_4.setText("");
+		textField_6.setText("");
+		textField_5.setText("");
+		textField_7.setText("");
+		textField_8.setText("");
+		textField_9.setText("");
+		comboBox.setSelectedIndex(0);
+	}
+	
+	private void display()
+	{
+		
+		icf.saveChanges(this, icf.tempcaseName);
+		
+		
+	}
+	private void display2()
+	{
+		 name = textField.getText();
+		 System.out.println("Case Name = " + name);
+		icf.retrieveCase(this, name);
+		
+		
+	}
+
 	public UpdateFrame() {
 		setTitle("Edit Form");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -236,69 +423,23 @@ public class UpdateFrame extends JFrame {
 		JButton btnSubmitChanges = new JButton("Submit Changes");
 		btnSubmitChanges.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String caseName = textField.getText();
-				String court = textField_1.getText();
-				String caseNo = textField_2.getText();
-				String lcaAttorney = (String)comboBox.getSelectedItem();
-				String PPT_OSC_Attorney  = textField_3.getText();
-				String DOJ_OIL_AUSA_E = textField_4.getText();
-				String DOS_srvd_recd = textField_5.getText();
-				String Answer_MTO_Date = textField_6.getText();
-				String Discovery_Cut_Date = textField_7.getText();
-				String trialDate = textField_8.getText();
-				String Event_Filing = textField_9.getText();
+			
 				
 				
-				System.out.println(caseName);
-				System.out.println(court);
-				try{
-					Connect c = new Connect();
-					Connection con = c.start();
-					PreparedStatement ps = con.prepareStatement("update pchart set Case_Name=?,Court=?,Case_Number=?,"
-							+ "LCA_Attorney=?, PPTL_OSCL_Attorney=?, DOJ_OIL_AUSA_Attorney_Email=?,DOS_Srvd_Recd=?,"
-							+ "Answer_MTO_Due_Date=?,Discovery_Cut_Off_Date=?,Trial_Date=?,Event_or_Filing=? where  Case_Name = '"+caseName+"'");
-					ps.setString(1, caseName);
-					ps.setString(2, court);
-					ps.setString(3, caseNo);
-					ps.setString(4, lcaAttorney);
-					ps.setString(5, PPT_OSC_Attorney);
-					ps.setString(6, DOJ_OIL_AUSA_E);
-					ps.setString(7, DOS_srvd_recd);
-					ps.setString(8, Answer_MTO_Date);
-					ps.setString(9, Discovery_Cut_Date);
-					ps.setString(10, trialDate);
-					ps.setString(11, Event_Filing);
-					
-					int x =0; 
-					x = ps.executeUpdate();
-					if(x!=0)
-					JOptionPane.showMessageDialog(contentPane, "Selection Updated Succefully!");
-					
-					con.close();
-				}	catch(ClassNotFoundException  | SQLException e)
-					{
-					System.out.println(e);
-					
-					}
 				
+				passData();
+				display();
+	
 				
 				//The Following statements will clear all of the fields in the Add Form
-				textField.setText("");
-				textField_1.setText("");
-				textField_2.setText("");
-				textField_3.setText("");
-				textField_4.setText("");
-				textField_6.setText("");
-				textField_5.setText("");
-				textField_7.setText("");
-				textField_8.setText("");
-				textField_9.setText("");
-				comboBox.setSelectedIndex(0);
+				clearFields();
 				
 				
-				dispose();
+				
 			}
 		});
+		
+	
 		btnSubmitChanges.setBounds(151, 506, 134, 23);
 		contentPane.add(btnSubmitChanges);
 		
@@ -306,91 +447,12 @@ public class UpdateFrame extends JFrame {
 		btnRetrieve.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				EditFrame fm = new EditFrame();
-				String name = textField.getText();
-				String ComboBoxStr;
-				try{
-					Connect c = new Connect();
-					Connection con = c.start();
-					PreparedStatement ps = con.prepareStatement("select * from pchart where Case_Name =?");
-					//String sql = "select * from pchart where Case_Name like '%"+name+"%'";
-					
-					ps.setString(1, name);
-					
-					ResultSet rs = ps.executeQuery();
-					while(rs.next())
-					{
-						
-						textField.setText(rs.getString("Case_Name"));
-						textField_1.setText(rs.getString("Court"));
-						textField_2.setText(rs.getString("Case_Number"));
-						
-							switch(rs.getString("LCA_Attorney"))
-								{
-										
-							case "Abbas Ravjani":
-								comboBox.setSelectedIndex(1);
-								break;
-							case "Catherine Peters":
-								comboBox.setSelectedIndex(2);
-								break;
-							case "Eddie Cohen":
-								comboBox.setSelectedIndex(3);
-								break;
-							case "Elizabeth Donnelly":
-								comboBox.setSelectedIndex(4);
-								break;
-							case "Jeremy Weinberg":
-								comboBox.setSelectedIndex(5);
-								break;
-							case "Judith Osborn":
-								comboBox.setSelectedIndex(6);
-								break;
-							case "Julianna Bentes":
-								comboBox.setSelectedIndex(7);
-								break;
-							case "Mahvish Madad":
-								comboBox.setSelectedIndex(8);
-								break;
-							case "Matthew Hackell":
-								comboBox.setSelectedIndex(9);
-								break;
-							case "Natalya Scimeca":
-								comboBox.setSelectedIndex(10);
-								break;
-							case "Nina Schou":
-								comboBox.setSelectedIndex(11);
-								break;
-							case "Semra Mesulam":
-								comboBox.setSelectedIndex(12);
-								break;
-							case "Stephen Kerr":
-								comboBox.setSelectedIndex(13);
-								break;
-								default: 
-									comboBox.setSelectedItem(0);
-							case "Steven Fabry":
-								comboBox.setSelectedItem(1);
-								break;
-					
-								}
-						
-
-						textField_3.setText(rs.getString("PPTL_OSCL_Attorney"));
-						textField_4.setText(rs.getString("DOJ_OIL_AUSA_Attorney_Email"));
-						textField_5.setText(rs.getString("DOS_Srvd_Recd"));
-						textField_6.setText(rs.getString("Answer_MTO_Due_Date"));
-						textField_7.setText(rs.getString("Discovery_Cut_Off_Date"));
-						textField_8.setText(rs.getString("Trial_Date"));
-						textField_9.setText(rs.getString("Event_or_Filing"));
-						
-					}
-					c.stop();
-					
-					}catch(ClassNotFoundException| SQLException e)
-					{
-					JOptionPane.showMessageDialog(contentPane, e);
-					}
+				display2();
+				passComponentData();
+				
+				
 			}
+			
 		});
 		btnRetrieve.setBounds(329, 506, 123, 23);
 		contentPane.add(btnRetrieve);

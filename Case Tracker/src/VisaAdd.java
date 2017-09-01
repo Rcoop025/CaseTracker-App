@@ -56,6 +56,42 @@ public class VisaAdd extends JFrame {
 		});
 	}
 
+	InheritVisaFuncs ivf = new InheritVisaFuncs();
+	
+	private void display()
+	{
+		ivf.addCase(this);
+		
+	}
+	
+	public void connectFields()
+	{
+		ivf.tempcaseName = textField.getText();
+		 ivf.tempCourt = textField_1.getText();
+		 ivf.tempCaseNo = textField_2.getText();
+		ivf.tempLcaAttorney = (String)comboBox.getSelectedItem();
+		 ivf.tempPPT_OSC_Attorney  = textField_3.getText();
+		 ivf.tempDOJ_OIL_AUSA_E = textField_4.getText();
+		ivf.tempDOS_srvd_recd = textField_5.getText();
+		ivf.tempAnswer_MTO_Date = textField_6.getText();
+		ivf.tempDiscovery_Cut_Date = textField_7.getText();
+		ivf.temptrialDate = textField_8.getText();
+		 ivf.tempEvent_Filing = textField_9.getText();
+	}
+	public void clearFields()
+	{
+		textField.setText("");
+		textField_1.setText("");
+		textField_2.setText("");
+		textField_3.setText("");
+		textField_4.setText("");
+		textField_6.setText("");
+		textField_5.setText("");
+		textField_7.setText("");
+		textField_8.setText("");
+		textField_9.setText("");
+		comboBox.setSelectedIndex(0);
+	}
 	/**
 	 * Create the frame.
 	 */
@@ -119,7 +155,7 @@ public class VisaAdd extends JFrame {
 		contentPane.add(label_4);
 		
 		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"[Select An Attorney]", "Abbas Ravjani", "Catherine Peters", "Eddie Cohen", "Elizabeth Donnelly", "Jeremy Weinberg", "Judith Osborn", "Julianna Bentes", "Mahvish Madad", "Matthew Hackell", "Natalya Scimeca", "Nina Schou", "Semra Mesulam", "Stephen Kerr", "Steven Fabry"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"[Select An Attorney]", "Judith Osborn", "Mahvish Madad", "Stephen Kerr"}));
 		comboBox.setBounds(247, 184, 166, 20);
 		contentPane.add(comboBox);
 		
@@ -210,61 +246,18 @@ public class VisaAdd extends JFrame {
 		JButton button = new JButton("Add Case");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//The Following statements are to connect the text fields/comboBox to a variable so that it can be manipulated
-				String caseName = textField.getText();
-				String court = textField_1.getText();
-				String caseNo = textField_2.getText();
-				String lcaAttorney = (String)comboBox.getSelectedItem();
-				String PPT_OSC_Attorney  = textField_3.getText();
-				String DOJ_OIL_AUSA_E = textField_4.getText();
-				String DOS_srvd_recd = textField_5.getText();
-				String Answer_MTO_Date = textField_6.getText();
-				String Discovery_Cut_Date = textField_7.getText();
-				String trialDate = textField_8.getText();
-				String Event_Filing = textField_9.getText();
 				
-				try{
-					Connect c = new Connect();
-					Connection con = c.start();
-					PreparedStatement ps = con.prepareStatement("insert into vchart values(?,?,?,?,?,?,?,?,?,?,?)");
-					ps.setString(1, caseName);
-					ps.setString(2, court);
-					ps.setString(3, caseNo);
-					ps.setString(4, lcaAttorney);
-					ps.setString(5, PPT_OSC_Attorney);
-					ps.setString(6, DOJ_OIL_AUSA_E);
-					ps.setString(7, DOS_srvd_recd);
-					ps.setString(8, Answer_MTO_Date);
-					ps.setString(9, Discovery_Cut_Date);
-					ps.setString(10, trialDate);
-					ps.setString(11, Event_Filing);
-					
-					int x =0; 
-					x = ps.executeUpdate();
-					if(x!=0)
-					JOptionPane.showMessageDialog(contentPane, "Data Inserted!");
-					
-					con.close();
-				}	catch(ClassNotFoundException  | SQLException e)
-					{
-					System.out.println(e);
-					
-					}
+				//This function helps to connect the components of the frame/window to variable for
+				//data manipulation
+				connectFields();
 				
+				//This display function is a principle of Object Oriented Design - Multiple Inheritance
+				//upon calling, the function uses an object "ivf", which inherits from an abstract class to 
+				//add data to the database.
+				display();
 				
 				//The Following statements will clear all of the fields in the Add Form
-				textField.setText("");
-				textField_1.setText("");
-				textField_2.setText("");
-				textField_3.setText("");
-				textField_4.setText("");
-				textField_6.setText("");
-				textField_5.setText("");
-				textField_7.setText("");
-				textField_8.setText("");
-				textField_9.setText("");
-				comboBox.setSelectedIndex(0);
-				
+				clearFields();
 				}
 			
 		});
