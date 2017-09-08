@@ -90,21 +90,7 @@ public class Login {
 				String name = nameField.getText();
 				char ch[] = passwordField.getPassword();
 				String password = new String(ch);
-				/*if(name.equals("Admin") && s2.equals("admin"))
-				{
-					JOptionPane.showMessageDialog(frmLoginFrame, "Successful Login!");
-					LitigationChoice lc = new LitigationChoice();
-					lc.setVisible(true);
-					frmLoginFrame.dispose();
-					
-					//System.out.println("Successful Login!");
-				}
-				else
-				{
-					//System.out.println("Failed Login Attempt");
-					JOptionPane.showMessageDialog(frmLoginFrame, "Failed Login!");
-				}
-				*/
+				
 				try{
 					Connect c =  new Connect();
 					Connection con = c.start();
@@ -122,11 +108,10 @@ public class Login {
 						lc.setVisible(true);
 						frmLoginFrame.dispose();
 						
-						//System.out.println("Successful Login!");
+						
 					}
 					else
 					{
-						//System.out.println("Failed Login Attempt");
 						JOptionPane.showMessageDialog(frmLoginFrame, "Failed Login!");
 					}
 				
@@ -163,4 +148,3 @@ public class Login {
 }
 
 
-//count = Integer.parseInt(ValLabel.getText());   (Held In place for the password field)

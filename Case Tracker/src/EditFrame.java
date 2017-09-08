@@ -145,7 +145,7 @@ public class EditFrame extends JFrame {
 		textField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent arg0) {
-	String name = textField.getText();
+				String name = textField.getText();
 				
 				try{
 				Connect c = new Connect();

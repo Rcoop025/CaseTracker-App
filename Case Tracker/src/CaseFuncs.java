@@ -22,8 +22,6 @@ public abstract class CaseFuncs {
 	protected String tempDiscovery_Cut_Date; 
 	protected String temptrialDate;
 	protected String tempEvent_Filing;
-	//protected JTextField textField;
-	//protected JComboBox comboBox;
 	protected boolean isValid;
 	
 	public abstract void display();
@@ -229,9 +227,6 @@ public abstract class CaseFuncs {
 			try{
 				Connect c = new Connect();
 				Connection con = c.start();
-				//PreparedStatement ps = con.prepareStatement("update pchart set Case_Name=?,Court=?,Case_Number=?,"
-						//+ "LCA_Attorney=?, PPTL_OSCL_Attorney=?, DOJ_OIL_AUSA_Attorney_Email=?,DOS_Srvd_Recd=?,"
-					//	+ "Answer_MTO_Due_Date=?,Discovery_Cut_Off_Date=?,Trial_Date=?,Event_or_Filing=? where  Case_Name = '"+caseName+"'");
 				
 				PreparedStatement ps = con.prepareStatement("insert into pass_inactive values(?,?,?,?,?,?,?,?,?,?,?)");
 				Statement st = con.createStatement();
@@ -256,10 +251,7 @@ public abstract class CaseFuncs {
 				String sql = "delete from pchart where Case_Name='"+tempcaseName+"'";
 				st.executeUpdate(sql);
 				int a =0;
-				/*
-				if(a!=0)
-					JOptionPane.showMessageDialog(contentPane, "Data Transferred!");
-				*/
+				
 				con.close();
 			}	catch(ClassNotFoundException  | SQLException e)
 				{
@@ -283,9 +275,6 @@ public abstract class CaseFuncs {
 			try{
 				Connect c = new Connect();
 				Connection con = c.start();
-				//PreparedStatement ps = con.prepareStatement("update pchart set Case_Name=?,Court=?,Case_Number=?,"
-						//+ "LCA_Attorney=?, PPTL_OSCL_Attorney=?, DOJ_OIL_AUSA_Attorney_Email=?,DOS_Srvd_Recd=?,"
-					//	+ "Answer_MTO_Due_Date=?,Discovery_Cut_Off_Date=?,Trial_Date=?,Event_or_Filing=? where  Case_Name = '"+caseName+"'");
 				
 				PreparedStatement ps = con.prepareStatement("insert into pchart values(?,?,?,?,?,?,?,?,?,?,?)");
 				Statement st = con.createStatement();
@@ -310,10 +299,7 @@ public abstract class CaseFuncs {
 				String sql = "delete from pass_inactive where Case_Name='"+tempcaseName+"'";
 				st.executeUpdate(sql);
 				int a =0;
-				/*
-				if(a!=0)
-					JOptionPane.showMessageDialog(contentPane, "Data Transferred!");
-				*/
+			
 				con.close();
 			}	catch(ClassNotFoundException  | SQLException e)
 				{

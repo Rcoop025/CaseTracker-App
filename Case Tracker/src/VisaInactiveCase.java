@@ -71,15 +71,15 @@ public class VisaInactiveCase extends JFrame {
 	public void passData()
 	{
 		
-		System.out.println("INSIDE OF THE PASS DATA FUNCTION");
+
 		
 		ivf.tempcaseName = textField.getText();
-		System.out.println("Pass Data-Case Name = " + ivf.tempcaseName);
+		
 		
 		ivf.tempCourt = textField_1.getText();
-		System.out.println("Pass Data-Court District = " + ivf.tempCourt);
+	
 		ivf.tempCaseNo = textField_2.getText();
-		System.out.println("Pass Data-Case Number = " + ivf.tempCaseNo);
+		
 		
 		ivf.tempLcaAttorney = (String)comboBox.getSelectedItem();
 		
@@ -186,7 +186,7 @@ public class VisaInactiveCase extends JFrame {
 	private void display2()
 	{
 		String name = textField.getText();
-		 System.out.println("Case Name = " + name);
+		
 		ivf.retrieveCase(this, name);
 		
 		

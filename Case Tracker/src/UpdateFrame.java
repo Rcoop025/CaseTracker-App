@@ -71,15 +71,15 @@ public class UpdateFrame extends JFrame {
 	public void passData()
 	{
 		
-		System.out.println("INSIDE OF THE PASS DATA FUNCTION");
+	
 		
 		icf.tempcaseName = textField.getText();
-		System.out.println("Pass Data-Case Name = " + icf.tempcaseName);
+		
 		
 		icf.tempCourt = textField_1.getText();
-		System.out.println("Pass Data-Court District = " + icf.tempCourt);
+		
 		icf.tempCaseNo = textField_2.getText();
-		System.out.println("Pass Data-Case Number = " + icf.tempCaseNo);
+	
 		
 		icf.tempLcaAttorney = (String)comboBox.getSelectedItem();
 		
@@ -245,7 +245,7 @@ public class UpdateFrame extends JFrame {
 	private void display2()
 	{
 		 name = textField.getText();
-		 System.out.println("Case Name = " + name);
+		
 		icf.retrieveCase(this, name);
 		
 		

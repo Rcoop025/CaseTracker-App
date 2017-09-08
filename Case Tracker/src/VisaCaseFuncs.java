@@ -228,9 +228,6 @@ public abstract class VisaCaseFuncs {
 				try{
 					Connect c = new Connect();
 					Connection con = c.start();
-					//PreparedStatement ps = con.prepareStatement("update pchart set Case_Name=?,Court=?,Case_Number=?,"
-							//+ "LCA_Attorney=?, PPTL_OSCL_Attorney=?, DOJ_OIL_AUSA_Attorney_Email=?,DOS_Srvd_Recd=?,"
-						//	+ "Answer_MTO_Due_Date=?,Discovery_Cut_Off_Date=?,Trial_Date=?,Event_or_Filing=? where  Case_Name = '"+caseName+"'");
 					
 					PreparedStatement ps = con.prepareStatement("insert into visa_inactive values(?,?,?,?,?,?,?,?,?,?,?)");
 					Statement st = con.createStatement();
@@ -255,10 +252,7 @@ public abstract class VisaCaseFuncs {
 					String sql = "delete from vchart where Case_Name='"+tempcaseName+"'";
 					st.executeUpdate(sql);
 					int a =0;
-					/*
-					if(a!=0)
-						JOptionPane.showMessageDialog(contentPane, "Data Transferred!");
-					*/
+				
 					con.close();
 				}	catch(ClassNotFoundException  | SQLException e)
 					{
@@ -282,10 +276,7 @@ public abstract class VisaCaseFuncs {
 				try{
 					Connect c = new Connect();
 					Connection con = c.start();
-					//PreparedStatement ps = con.prepareStatement("update pchart set Case_Name=?,Court=?,Case_Number=?,"
-							//+ "LCA_Attorney=?, PPTL_OSCL_Attorney=?, DOJ_OIL_AUSA_Attorney_Email=?,DOS_Srvd_Recd=?,"
-						//	+ "Answer_MTO_Due_Date=?,Discovery_Cut_Off_Date=?,Trial_Date=?,Event_or_Filing=? where  Case_Name = '"+caseName+"'");
-					
+			
 					PreparedStatement ps = con.prepareStatement("insert into vchart values(?,?,?,?,?,?,?,?,?,?,?)");
 					Statement st = con.createStatement();
 					ps.setString(1, tempcaseName);
@@ -309,10 +300,7 @@ public abstract class VisaCaseFuncs {
 					String sql = "delete from visa_inactive where Case_Name='"+tempcaseName+"'";
 					st.executeUpdate(sql);
 					int a =0;
-					/*
-					if(a!=0)
-						JOptionPane.showMessageDialog(contentPane, "Data Transferred!");
-					*/
+					
 					con.close();
 				}	catch(ClassNotFoundException  | SQLException e)
 					{
